@@ -6,15 +6,15 @@ In this research, I explore the application of machine learning and econometrics
 ## Methodology
 Data Collection: Historical data for PTN and JPM were collected and analyzed. For a broader perspective, a custom ETF was created to encapsulate a diversified portfolio.
 
-### Feature Engineering: I computed technical indicators like Simple Moving Averages and Bollinger Bands to serve as features for the Random Forest model.
+Feature Engineering: I computed technical indicators like Simple Moving Averages and Bollinger Bands to serve as features for the Random Forest model.
 
-### Random Forest Model: The RF model was trained to predict stock price movements. The model's hyperparameters were optimized using RandomizedSearchCV to minimize the mean absolute error.
+Random Forest Model: The RF model was trained to predict stock price movements. The model's hyperparameters were optimized using RandomizedSearchCV to minimize the mean absolute error.
 
-### GARCH Model Integration: Alongside the RF model, I employed a GARCH model to forecast volatility. The model was specified with p=2 and q=2, reflecting the assumption that both the autoregressive and moving average components of the volatility had a lag of two.
+GARCH Model Integration: Alongside the RF model, I employed a GARCH model to forecast volatility. The model was specified with p=2 and q=2, reflecting the assumption that both the autoregressive and moving average components of the volatility had a lag of two.
 
-### Trading Simulation: The trading strategy was simulated over a period, using the RF model to predict closing prices and the GARCH model to forecast volatility. The buy or sell decisions were based on the predicted closing price and volatility trends.
+Trading Simulation: The trading strategy was simulated over a period, using the RF model to predict closing prices and the GARCH model to forecast volatility. The buy or sell decisions were based on the predicted closing price and volatility trends.
 
-## Results
+Results
 The trading strategy yielded a profit of 7.54% over the simulation period, compared to a 4.46% profit from a buy-and-hold strategy. This indicates a successful application of the strategy in generating returns above a simple buy-and-hold approach.
 
 ![alt text](https://github.com/davidnallapu/RF_GARCH_Trading_algorithm/blob/main/download.png)
@@ -22,9 +22,9 @@ The trading strategy yielded a profit of 7.54% over the simulation period, compa
 ## Trading Methodology
 The trading methodology was underpinned by the following logic:
 
-### Sell Signal: Generated when the actual opening price was higher than the RF model's predicted closing price, suggesting an overvalued opening price. Additionally, a sell was triggered if the GARCH model indicated decreasing volatility, signaling a potential decrease in price movement.
+Sell Signal: Generated when the actual opening price was higher than the RF model's predicted closing price, suggesting an overvalued opening price. Additionally, a sell was triggered if the GARCH model indicated decreasing volatility, signaling a potential decrease in price movement.
 
-### Buy Signal: Triggered when the actual opening price was lower than the RF model's predicted closing price, indicating an undervalued opening price. A buy was also initiated if increasing volatility was forecasted by the GARCH model, implying expected larger price movements that could be capitalized upon.
+Buy Signal: Triggered when the actual opening price was lower than the RF model's predicted closing price, indicating an undervalued opening price. A buy was also initiated if increasing volatility was forecasted by the GARCH model, implying expected larger price movements that could be capitalized upon.
 
 These decisions were encapsulated in a day_trade function that took into account both the RF model's predictions and the GARCH model's volatility forecasts, executing trades based on the combined signals.
 

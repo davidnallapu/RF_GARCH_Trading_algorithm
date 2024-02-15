@@ -22,9 +22,9 @@ The trading strategy yielded a profit of 7.54% over the simulation period, compa
 ## Trading Methodology
 The trading methodology was underpinned by the following logic:
 
-Sell Signal: Generated when the actual opening price was higher than the RF model's predicted closing price, suggesting an overvalued opening price. Additionally, a sell was triggered if the GARCH model indicated decreasing volatility, signaling a potential decrease in price movement.
+Sell Signal: Generated when the actual opening price was higher than the RF model's predicted closing price, suggesting an overvalued opening price. Additionally, a sell was triggered if the GARCH model indicated increasing volatility, signaling a potential decrease in price movement.
 
-Buy Signal: Triggered when the actual opening price was lower than the RF model's predicted closing price, indicating an undervalued opening price. A buy was also initiated if increasing volatility was forecasted by the GARCH model, implying expected larger price movements that could be capitalized upon.
+Buy Signal: Triggered when the actual opening price was lower than the RF model's predicted closing price, indicating an undervalued opening price. A buy was also initiated if decreasing volatility was forecasted by the GARCH model, implying expected larger price movements that could be capitalized upon.
 
 These decisions were encapsulated in a day_trade function that took into account both the RF model's predictions and the GARCH model's volatility forecasts, executing trades based on the combined signals.
 
@@ -59,9 +59,9 @@ The GARCH model provided a three-day ahead volatility forecast, which was used t
 Trading Signals:
 
 A sell signal was generated when the actual opening price was higher than the predicted closing price from the RF model. This was interpreted as the market opening at an overvalued price level.
-If the GARCH model indicated a decreasing volatility trend, it reinforced the sell signal, suggesting a potential decrease in price movement ahead.
+If the GARCH model indicated a increasing volatility trend, it reinforced the sell signal, suggesting a potential decrease and uncertainity in price movement ahead.
 A buy signal was generated when the actual opening price was lower than the RF model's predicted closing price. This was seen as the market opening at an undervalued price level.
-An increasing volatility trend from the GARCH model would trigger a buy signal, indicating larger expected price movements that could be advantageous.
+A decreased volatility trend from the GARCH model would trigger a buy signal, indicating larger expected and less volatile price movements that could be advantageous.
 
 ### Trade Execution:
 
